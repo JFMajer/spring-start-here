@@ -2,6 +2,7 @@ package beans;
 
 import beans.Parrot;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -9,10 +10,15 @@ public class Person {
 
     private String name = "Vasya";
 
-    private final Parrot parrot;
+    private Parrot parrot;
+
+    // constructor with no arguments
+    public Person() {
+        this.parrot = null;
+    }
 
     @Autowired
-    public Person(Parrot parrot) {
+    public Person(@Qualifier("parrot1") Parrot parrot) {
         this.parrot = parrot;
     }
 
@@ -23,6 +29,10 @@ public class Person {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public void setParrot(Parrot parrot) {
+        this.parrot = parrot;
     }
 
     public Parrot getParrot() {
