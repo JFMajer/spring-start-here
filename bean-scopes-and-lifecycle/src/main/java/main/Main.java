@@ -11,6 +11,10 @@ public class Main {
 
         var c = new AnnotationConfigApplicationContext(ProjectConfiguration.class);
 
+        System.out.println("Context created");
+        var userService = c.getBean(UserService.class);
+        System.out.println("User service created");
+
 //        var s1 = c.getBean(CommentService.class);
 //        var s2 = c.getBean(UserService.class);
 //
