@@ -3,7 +3,7 @@ package main;
 import configuration.ProjectConfiguration;
 import model.Comment;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import proxies.EmailNotificationproxy;
+import proxies.EmailNotificationProxy;
 import repositories.CommentRepository;
 import repositories.DBCommentRepository;
 import services.CommentService;
