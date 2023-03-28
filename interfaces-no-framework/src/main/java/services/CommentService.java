@@ -20,6 +20,12 @@ public class CommentService {
         this.commentNotificationProxy = commentNotificationProxy;
     }
 
+    // create constructor with no parameters
+    public CommentService() {
+        this.commentRepository = null;
+        this.commentNotificationProxy = null;
+    }
+
     public void publishComment(Comment comment) {
         commentRepository.storeComment(comment);
         commentNotificationProxy.sendComment(comment);
