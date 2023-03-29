@@ -7,7 +7,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class CommentService {
 
-    public void publishComment(Comment comment) {
-        System.out.println("Publishing comment: " + comment);
+    public String publishComment(Comment comment) {
+        System.out.println("Publishing comment...: " + comment);
+        return "Success";
     }
 }

@@ -4,6 +4,11 @@ public class Comment {
     private String text;
     private String author;
 
+    public Comment(String text, String author) {
+        this.text = text;
+        this.author = author;
+    }
+
     // getters and setters
 
     public void setText(String text) {
