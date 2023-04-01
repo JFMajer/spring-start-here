@@ -33,10 +33,12 @@ public class LoginController {
 
         if (loggedIn) {
             model.addAttribute("message", "You are logged in!");
+            return "redirect:/main";
         } else {
             model.addAttribute("message", "You are not logged in!");
         }
-
+        model.addAttribute("message", "authentication failed");
         return "login.html";
     }
+
 }
