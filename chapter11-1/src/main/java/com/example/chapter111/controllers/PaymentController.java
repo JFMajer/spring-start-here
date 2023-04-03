@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RestController;
+import com.example.chapter111.proxy.PaymentProxy;
 
 import java.util.UUID;
 import java.util.logging.Logger;
@@ -14,21 +15,17 @@ import java.util.logging.Logger;
 @RestController
 public class PaymentController {
 
-    private static Logger logger = Logger.getLogger(PaymentController.class.getName());
+    private final PaymentProxy paymentProxy;
+
+    public PaymentController(PaymentProxy paymentProxy) {
+        this.paymentProxy = paymentProxy;
+    }
 
     @PostMapping ("/payment")
-    public ResponseEntity<Payment> createPayment(
-            @RequestHeader String requestId,
+    public Payment createPayment(
             @RequestBody Payment payment
-        ) {
-        logger.info("received payment request with id: " + requestId);
-        logger.info("received payment request with amount: " + payment.getAmount());
-
-        payment.setId(UUID.randomUUID().toString());
-
-        return ResponseEntity
-                .status(HttpStatus.OK)
-                .header("requestId", requestId)
-                .body(payment);
-        }
+    ) {
+    String requestId = UUID.randomUUID().toString();
+    return paymentProxy.createPayment(requestId, payment);
+    }
 }
