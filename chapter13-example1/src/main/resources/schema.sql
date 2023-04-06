@@ -1,0 +1,5 @@
+CREATE TABLE account (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(255) NOT NULL,
+    amount DECIMAL(10,2) NOT NULL
+);
