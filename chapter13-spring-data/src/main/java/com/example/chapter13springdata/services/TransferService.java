@@ -39,4 +39,12 @@ public class TransferService {
     public List<Account> findAccountsByName(String name) {
         return accountRepository.findAccountsByName(name);
     }
+
+    //add money to account
+    @Transactional
+    public void addMoney(long id, BigDecimal amount) throws AccountNotFoundException {
+        Account account = accountRepository.findById(id).orElseThrow(() -> new AccountNotFoundException());
+        BigDecimal newAmount = account.getAmount().add(amount);
+        accountRepository.changeAmount(id, newAmount);
+    }
 }
